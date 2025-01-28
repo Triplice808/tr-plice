@@ -1,13 +1,14 @@
 /* header.css */
 header {
-    background-color: #007BFF;
-    color: white;
+    background-color: #1A1A1A; /* Preto quase sólido */
+    color: #E0E0E0; /* Cinza claro para o texto */
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     font-family: 'Segoe UI', sans-serif;
+    position: relative; /* Adicionado para posicionamento absoluto da navbar */
 }
 
 header h1 {
@@ -15,6 +16,7 @@ header h1 {
     font-size: 1.8rem;
     font-weight: 300;
     letter-spacing: 1px;
+    color: #FFFFFF; /* Branco para o título */
 }
 
 nav {
@@ -23,41 +25,87 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: #E0E0E0; /* Cinza claro para os links */
     text-decoration: none;
     font-weight: 400;
     font-size: 0.9rem;
-    transition: opacity 0.3s ease;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    opacity: 0.8;
+    color: #BB86FC; /* Roxo claro para o hover */
     text-decoration: none;
 }
 
 nav a.active {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid #BB86FC; /* Roxo claro para o link ativo */
     padding-bottom: 2px;
+}
+
+/* Estilos para o menu toggle (ícone de hambúrguer) */
+.menu-toggle {
+    display: none; /* Oculta o ícone por padrão */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1000; /* Garante que o ícone fique acima de outros elementos */
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #E0E0E0; /* Cor das barras do ícone */
+    margin: 4px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Adicionando responsividade */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         padding: 15px;
     }
 
     header h1 {
         font-size: 1.6rem;
-        margin-bottom: 10px;
+        margin-bottom: 0;
     }
 
     nav {
-        gap: 15px;
+        display: none; /* Oculta a navbar por padrão em dispositivos móveis */
+        flex-direction: column;
+        width: 100%;
+        background-color: #1A1A1A;
+        position: absolute;
+        top: 60px; /* Ajuste conforme a altura do header */
+        left: 0;
+        padding: 10px 0;
+        z-index: 999; /* Garante que a navbar fique acima de outros conteúdos */
+    }
+
+    nav.active {
+        display: flex; /* Mostra a navbar quando o menu toggle é clicado */
     }
 
     nav a {
-        font-size: 0.85rem;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .menu-toggle {
+        display: flex; /* Mostra o ícone de hambúrguer em dispositivos móveis */
+    }
+
+    /* Animação para o ícone de hambúrguer */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
     }
 }
