@@ -1,0 +1,20 @@
+/* redes-sociais.css */
+.redes-sociais {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .redes-sociais h2 {
+    margin-bottom: 20px;
+  }
+  
+  .redes-sociais a {
+    margin: 0 10px;
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .redes-sociais a:hover {
+    text-decoration: underline;
+  }
