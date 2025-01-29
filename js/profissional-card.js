@@ -4,22 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cards.forEach(card => {
         card.addEventListener('click', function() {
-            // Fecha todos os cards que estão abertos
+            // Fecha outros cards
             cards.forEach(c => {
                 if (c !== card && c.classList.contains('expanded')) {
                     c.classList.remove('expanded');
                 }
             });
 
-            // Alterna a classe 'expanded' no card clicado
+            // Alterna o estado do card clicado
             card.classList.toggle('expanded');
 
-            // Adiciona ou remove a classe 'blurred' no container
-            if (card.classList.contains('expanded')) {
-                container.classList.add('blurred');
-            } else {
-                container.classList.remove('blurred');
-            }
+            // Atualiza o blur
+            container.classList.toggle('blurred', card.classList.contains('expanded'));
         });
     });
 });
