@@ -1,32 +1,199 @@
 /* profissionais.css */
 #profissionais {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8e8e8 100%);
     text-align: center;
-  }
-  
-  #profissionais h2 {
+}
+
+#profissionais h2 {
     margin-bottom: 20px;
-  }
-  
-  .profissionais {
+    font-size: 2.5rem;
+    color: #2a2a2a;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+#profissionais h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+}
+
+.profissionais {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  
-  .profissional-card {
-    background-color: white;
-    padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 30%;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    padding: 30px 0;
+}
+
+.profissional-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    width: 220px;
     text-align: center;
-  }
-  
-  .profissional-card img {
-    width: 100%;
-    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.profissional-card:hover:not(.expanded) {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+}
+
+.profissional-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+    border: 3px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.profissional-card h3 {
+    color: #2a2a2a;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.profissional-card .especialidade {
+    color: #007bff;
+    font-weight: 600;
+    font-size: 0.95rem;
     margin-bottom: 15px;
-  }
+    display: block;
+}
+
+.profissional-info {
+    display: none;
+    text-align: left;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Card Expandido */
+.profissional-card.expanded {
+    width: 500px;
+    z-index: 10;
+    transform: translateY(-20px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.profissional-card.expanded img {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin: 0 25px 15px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profissional-card.expanded .profissional-info {
+    display: block;
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.profissional-info p {
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.profissional-info p::before {
+    content: '•';
+    color: #007bff;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Efeitos de Fundo */
+.profissionais.blurred .profissional-card:not(.expanded) {
+    filter: blur(4px) grayscale(30%);
+    opacity: 0.6;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .profissionais {
+        flex-wrap: wrap;
+    }
+    
+    .profissional-card.expanded {
+        width: 90%;
+        min-width: 300px;
+    }
+    
+    .profissional-card.expanded img {
+        float: none;
+        margin: 0 auto 20px;
+        display: block;
+    }
+}
+
+/* Elementos Decorativos */
+.profissional-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff 0%, #00ff88 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profissional-card.expanded::after {
+    opacity: 1;
+}
+
+.contato-info {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.contato-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.contato-item i {
+    color: #007bff;
+    font-size: 1.1rem;
+}
