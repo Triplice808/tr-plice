@@ -1,32 +1,28 @@
-document.getElementById('form-contato').addEventListener('submit', function (e) {
+document.getElementById('form-contato').addEventListener('submit', async (e) => {
     e.preventDefault();
-
+    
     const dados = {
       nomeCompleto: document.getElementById('nomeCompleto').value,
       email: document.getElementById('email').value,
       telefone: document.getElementById('telefone').value,
       motivoConsulta: document.getElementById('motivoConsulta').value
     };
-
-    // Use SEU_URL_DO_SCRIPT
-    fetch('https://script.google.com/macros/s/AKfycbxzFyDYtmkCiohtFSMcY80eqOpwyfMek_dFpP5JotaM0ZHjxRm5OdQjEPcrTnUOd6Mt/exec', {
-      method: 'POST',
-      body: JSON.stringify(dados),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json()) // Alterado para .json()
-    .then(result => {
+  
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyXAzmHI4KSdcScSZlIQ3anIjuw7rdk3LsyZp0OoVPs8x-j0foa72Uuk8DTdjKb_afdkg/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      });
+      
+      const result = await response.json();
       if (result.success) {
-        alert(result.message);
+        alert('Dados salvos!');
         document.getElementById('form-contato').reset();
       } else {
-        alert("Erro: " + result.error);
+        alert('Erro: ' + result.error);
       }
-    })
-    .catch(error => {
-      console.error('Erro:', error);
-      alert('Falha ao conectar ao servidor.');
-    });
+    } catch (error) {
+      alert('Falha na conexão. Tente novamente.');
+    }
   });
