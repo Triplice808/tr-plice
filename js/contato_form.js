@@ -8,20 +8,25 @@ document.getElementById('form-contato').addEventListener('submit', function (e) 
       motivoConsulta: document.getElementById('motivoConsulta').value
     };
 
-    fetch('https://script.google.com/macros/s/AKfycbyo95kX9Fi0HRnEGTL1o6ciZJjJNR3KlMqYBNef-A4_6XokDSQgRTODA4jefLdqhBlOUw/exec', {
+    // Use SEU_URL_DO_SCRIPT
+    fetch('https://script.google.com/macros/s/AKfycbxzFyDYtmkCiohtFSMcY80eqOpwyfMek_dFpP5JotaM0ZHjxRm5OdQjEPcrTnUOd6Mt/exec', {
       method: 'POST',
       body: JSON.stringify(dados),
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    .then(response => response.text())
-    .then(message => {
-      alert(message); // Exibe a resposta do servidor
-      document.getElementById('form-contato').reset(); // Limpa o formulário
+    .then(response => response.json()) // Alterado para .json()
+    .then(result => {
+      if (result.success) {
+        alert(result.message);
+        document.getElementById('form-contato').reset();
+      } else {
+        alert("Erro: " + result.error);
+      }
     })
     .catch(error => {
       console.error('Erro:', error);
-      alert('Ocorreu um erro ao enviar o formulário.');
+      alert('Falha ao conectar ao servidor.');
     });
   });
