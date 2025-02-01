@@ -90,14 +90,22 @@
 </div>
 
 <section id="contato">
-  <h2>Agende sua sessão</h2>
-  <form id="form-contato">
-    <input type="text" id="nomeCompleto" name="nome" placeholder="Nome completo" required>
-    <input type="email" id="email" name="email" placeholder="E-mail" required>
-    <input type="tel" id="telefone" name="telefone" placeholder="Telefone" required>
-    <textarea id="motivoConsulta" name="mensagem" placeholder="O que lhe levou a buscar a terapia?" required></textarea>
-    <button type="submit">Enviar</button>
-  </form>
+  <div class="container">
+    <form id="contact-form" method="post">
+      <h2>Agende sua sessão</h2>
+      <div id="message" class="alert" style="display: none;"></div>
+
+      <input type="text" name="nome" placeholder="Nome completo" required>
+      <input type="email" name="email" placeholder="E-mail" required>
+      <input type="tel" name="telefone" placeholder="Telefone" pattern="[0-9]{11}" required>
+      <textarea name="mensagem" rows="7" placeholder="O que lhe levou a buscar a terapia?" required></textarea>
+      
+      <button type="submit" id="submit-btn">
+        <span class="btn-text">Enviar</span>
+        <div class="loader" style="display: none;"></div>
+      </button>
+    </form>
+  </div>
 </section>
 
   <section id="redes-sociais" class="redes-sociais">
