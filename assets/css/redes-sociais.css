@@ -1,4 +1,10 @@
 /* redes-sociais.css */
+/* Estilos gerais */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .redes-sociais {
   padding: 50px 20px;
   background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
@@ -11,143 +17,79 @@
   font-size: 1.8rem;
   font-weight: 300;
   letter-spacing: 0.5px;
-  color: #ffffff
 }
 
-.redes-sociais-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.redes-sociais a {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.8rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-  border-radius: 4px;
-}
-
-.redes-sociais a i {
-  margin-right: 0.8rem;
-  font-size: 1.4rem;
-  transition: color 0.3s ease;
-}
-
-.redes-sociais a span {
-  font-weight: 300;
-  font-size: 0.95rem;
-}
-
-.instagram-cta {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px 20px;
-}
-
-.chamada-instagram {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 20px 0 30px;
-}
-
-.hashtag {
-  display: inline-block;
-  margin-top: 15px;
-  font-weight: 500;
-  color: #ffd3e0;
-}
-
-.botao-instagram {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 25px;
-  background: linear-gradient(45deg, #405de6, #833ab4, #ffdc80);
-  color: #fff !important;
-  border-radius: 25px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-}
-
-.botao-instagram i {
-  font-size: 1.4rem;
-  margin-right: 12px;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
-}
-
-.botao-instagram:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-}
-
-.redes-sociais a:hover {
-  opacity: 0.9;
-  color: #fff;
-}
-
-.redes-sociais a:hover i {
-  color: #007BFF;
-}
-
-/* Estilos do carrossel ajustados */
+/* Carrossel de Instagram */
 .carrossel-container {
-  max-width: 1000px;
-  margin: 1rem auto;
-  padding: 0 30px;
+  max-width: 80%;
+  margin: 2rem auto;
+  padding: 0 15px;
+  overflow: hidden;
 }
 
 .carrossel {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   scroll-behavior: smooth;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 15px;
+  /* Esconde a barra de rolagem */
+  scrollbar-width: none; /* Para Firefox */
+  -ms-overflow-style: none; /* Para Internet Explorer e Edge */
+}
+
+/* Esconde a barra de rolagem no Chrome, Safari e Opera */
+.carrossel::-webkit-scrollbar {
+  display: none;
 }
 
 .carrossel-item {
-  flex: 0 0 calc(33.333% - 10px);
+  flex: 0 0 100%;
+  scroll-snap-align: start;
   min-height: 400px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
 }
 
+.carrossel-item blockquote {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: none !important;
+}
+
+/* Efeitos hover */
 .carrossel-item:hover {
   transform: translateY(-5px);
 }
 
-@media (max-width: 768px) {
+/* Responsividade */
+@media (min-width: 768px) {
   .carrossel-item {
-    flex: 0 0 100%;
+    flex: 0 0 calc(50% - 10px);
   }
   
   .carrossel-container {
-    padding: 0 15px;
+    padding: 0 30px;
   }
-  
+}
+
+@media (min-width: 1024px) {
+  .carrossel-item {
+    flex: 0 0 calc(33.333% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
   .redes-sociais {
     padding: 40px 15px;
   }
   
-  .redes-sociais-links {
-    gap: 1rem;
-  }
-  
-  .redes-sociais a {
-    padding: 0.6rem;
-  }
-  
-  .redes-sociais a i {
-    font-size: 1.2rem;
-    margin-right: 0.6rem;
-  }
-  
-  .redes-sociais a span {
-    font-size: 0.85rem;
+  .carrossel {
+    gap: 15px;
   }
 }
