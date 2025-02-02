@@ -111,9 +111,12 @@
       padding: 40px 15px; /* Ajuste do padding para mobile */
     }
   
+    /* Para mobile, força as linhas (superior e inferior) a ocuparem toda a largura da viewport */
     #faq.faq::before,
     #faq.faq::after {
-      width: 80px; /* Redução do tamanho das linhas para mobile */
+      width: 100vw;
+      left: 50%;
+      transform: translateX(-50%);
     }
   
     .faq-question {
@@ -137,3 +140,4 @@
       padding: 1.2rem 0;
     }
   }
+  
