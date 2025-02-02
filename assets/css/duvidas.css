@@ -1,0 +1,103 @@
+/* Estilos FAQ */
+.faq-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: left; /* Alinhamento geral à esquerda */
+    color: #ffffff; /* Texto branco */
+  }
+  
+  .faq-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #ffffff; /* Texto branco */
+  }
+  
+  .faq-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    text-align: left; /* Alinhamento específico para os itens */
+  }
+  
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+  
+  .faq-question {
+    padding: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    color: #ffffff; /* Texto branco */
+  }
+  
+  .faq-question h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-align: left; /* Alinhamento do título */
+    width: 90%; /* Espaço consistente para o ícone */
+    color: #ffffff; /* Texto branco */
+  }
+  
+  .faq-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: #007BFF; /* Mantido azul para contraste */
+    margin-left: 15px; /* Espaçamento do ícone */
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 1.2rem;
+    background: rgba(0, 123, 255, 0.05);
+    color: #ffffff; /* Texto branco */
+  }
+  
+  .faq-answer p {
+    margin: 0;
+    padding: 1.2rem 0;
+    line-height: 1.6;
+    color: #ffffff; /* Texto branco */
+    text-align: left; /* Alinhamento do texto da resposta */
+  }
+  
+  /* Estado Ativo */
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+  }
+  
+  .faq-item.active .faq-answer {
+    max-height: 200px;
+  }
+  
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 30px 15px;
+    }
+    
+    .faq-question {
+      padding: 1rem;
+    }
+    
+    .faq-question h3 {
+      font-size: 1rem;
+      width: 85%; /* Ajuste responsivo */
+    }
+    
+    .faq-icon {
+      margin-left: 10px;
+    }
+  }
